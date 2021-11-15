@@ -7,7 +7,7 @@ namespace MessageDrop.Web.Pages.Messages
     public class ListModel : PageModel
     {
         private readonly IMessageData _messageData;
-        public IEnumerable<Message> Messages { get; set; }
+        public IEnumerable<MessageCore> Messages { get; set; }
 
         public ListModel(IMessageData messageData)
         {

@@ -1,12 +1,12 @@
 ﻿namespace MessageDrop.Core.Model
 {
-    public class Message
+    public class MessageCore
     {
         public int Id { get; set; }
         public string MessageString { get; set; }
 
 
-        public Message(int id, string messageString)
+        public MessageCore(int id, string messageString)
         {
             this.Id = id;
             this.MessageString = messageString;

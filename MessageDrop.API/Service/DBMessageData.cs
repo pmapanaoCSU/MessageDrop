@@ -1,28 +1,38 @@
 ﻿using MessageDrop.Core.Interface;
+using MessageDrop.EF;
 using MessageDrop.EF.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
 
-namespace MessageDrop.Core.Service
+namespace MessageDrop.API.Service
 {
-    public class InMemoryMessageData : IMessageData
+    public class DBMessageData : IMessageData
     {
         // This can be removed later 
         private int genID = 0;
 
         // MAKE SURE TO EDIT THIS PATH ON YOUR LOCAL MACHINE CONTEXT 
-        private string RANDOM_WORDS_JSON = @"C:\Users\emarl\Source\Repos\pmapanaoCSU\MessageDrop\MessageDrop.Core\StaticData\RandomWords.json";
+        private string RANDOM_WORDS_JSON = @"C:\Users\AccedeoPix\source\repos\MessageDrop.Web\MessageDrop.Core\StaticData\RandomWords.json";
 
         private Random rng = new Random();
 
-        readonly List<Message> _messages = new List<Message>();
+        // Circular dependency problem on getting a DB context 
+        private readonly MessageDropDataContext _context;
 
-        public InMemoryMessageData(bool isInitSeedData, [Optional] int numSeedData)
+        public DBMessageData(MessageDropDataContext context)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(_context));
+            GenerateSeedMessages(20);
+        }
+
+        public DBMessageData(bool isInitSeedData, [Optional] int numSeedData, MessageDropDataContext context)
         {
             if (isInitSeedData)
             {
-                _messages = GenerateSeedMessages(numSeedData);
+                _context = context ?? throw new ArgumentNullException(nameof(_context));
+
+                if (isInitSeedData) GenerateSeedMessages(numSeedData);
             }
 
         }
@@ -48,43 +58,42 @@ namespace MessageDrop.Core.Service
             return stringsFromJson;
 
         }
-        private List<Message> GenerateSeedMessages(int numSeedData)
+        private void GenerateSeedMessages(int numSeedData)
         {
             // Get list of Random Words 
             var randomWords = getListOfDataFromJson(RANDOM_WORDS_JSON, "Words");
-
-            // Empty list of messages
-            List<Message> seedData = new List<Message>();
 
 
             // Populate messages in seedData
             for (int i = 0; i < numSeedData; i++)
             {
                 int index = rng.Next(randomWords.Count);
-                int id = i + 1;
-                seedData.Add(new Message(id, randomWords[index]));
+                Message messageToAdd = new Message(randomWords[index]);
+
+                _context.Add(messageToAdd);
             }
 
-            return seedData;
+            this.Save();
+
+        }
+
+        public Task<IEnumerable<Message>> GetAll()
+        {
+            IEnumerable<Message> messages = _context.Messages.ToList();
+            return Task.FromResult(messages);
         }
 
         public Task<Message> Get(int id)
         {
             var messageById =
-                from message in _messages
+                from message in _context.Messages
                 where message.Id == id
                 select message;
 
-            // accountById returns IEnumerable meaning we have to cast it as a single Account 
-            return Task.FromResult<Message>((Message)messageById);
-        }
+            Message messageFromContext = messageById.FirstOrDefault();
 
-        public Task<IEnumerable<Message>> GetAll()
-        {
-            IEnumerable<Message> messages = new List<Message>();
-            return Task.FromResult(messages);
+            return Task.FromResult<Message>(messageFromContext);
         }
-
 
         public Task<bool> Insert(Message message)
         {
@@ -93,13 +102,18 @@ namespace MessageDrop.Core.Service
                 return Task.FromResult(false);
             }
 
-            _messages.Add(message);
+            Message messageToAdd = new Message(message.Id, message.MessageString);
+            _context.Add(messageToAdd);
             return Task.FromResult(true);
         }
 
         public Task<bool> Save()
         {
-            return Task.FromResult(true);
+            int numSaved = _context.SaveChanges();
+
+            if (numSaved > 0) return Task.FromResult(true);
+            else return Task.FromResult(false);
         }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using MessageDrop.Core.Model;
+﻿using MessageDrop.EF.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace MessageDrop.EF
@@ -22,6 +22,7 @@ namespace MessageDrop.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            //TODO sure to change to your local DB name here 
             options.UseSqlServer("" +
                 "Data Source=(localdb)\\MSSQLLocalDB;" +
                 "Initial Catalog=MessageDropAppData;" +
