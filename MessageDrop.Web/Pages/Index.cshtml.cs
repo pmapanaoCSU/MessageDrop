@@ -8,17 +8,24 @@ namespace MessageDrop.Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IMessageData _messageData;
-        public IEnumerable<Message> messages { get; set; }
+        public IEnumerable<Message> Messages { get; set; }
+        private Message message;
 
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IMessageData messageData)
         {
             _logger = logger;
+            _messageData = messageData;
         }
 
-        public void OnGet()
+        public async void OnGet()
         {
+            Messages = await _messageData.GetAll();
+        }
 
+        public void setMessage(string message)
+        {
+            this.message = new Message(99, message);
         }
     }
 }
