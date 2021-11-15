@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MessageDrop.API.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MessageDropAPIContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MessageDropAPIContext")));
 
 // Add services to the container.
 
