@@ -23,9 +23,12 @@ namespace MessageDrop.Web.Pages
             Messages = await _messageData.GetAll();
         }
 
-        public void setMessage(string message)
+        public String SetMessage(string message)
         {
             this.message = new Message(99, message);
+            _messageData.Insert(this.message);
+            OnGet();
+            return this.message.MessageString;
         }
     }
 }
