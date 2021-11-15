@@ -1,4 +1,4 @@
-﻿using MessageDrop.Core.Model;
+﻿using MessageDrop.EF.Model;
 
 namespace MessageDrop.Core.Interface
 {
@@ -8,5 +8,7 @@ namespace MessageDrop.Core.Interface
         Task<Message> Get(int id);
 
         Task<bool> Insert(Message message);
+
+        Task<bool> Save();
     }
 }
