@@ -5,5 +5,12 @@
         public int Id { get; set; }
         public string MessageString { get; set; }
 
+
+        public Message(int id, string messageString)
+        {
+            this.Id = id;
+            this.MessageString = messageString;
+        }
+
     }
 }

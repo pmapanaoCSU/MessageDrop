@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageDrop.Web", "MessageDrop.Web\MessageDrop.Web.csproj", "{7683CAF5-B2AF-4599-A5D1-CF9B9A9277B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageDrop.Web", "MessageDrop.Web\MessageDrop.Web.csproj", "{7683CAF5-B2AF-4599-A5D1-CF9B9A9277B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageDrop.API", "MessageDrop.API\MessageDrop.API.csproj", "{041810C2-0B7D-484D-8DF5-D94A0D1C9FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageDrop.API", "MessageDrop.API\MessageDrop.API.csproj", "{041810C2-0B7D-484D-8DF5-D94A0D1C9FE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageDrop.Core", "MessageDrop.Core\MessageDrop.Core.csproj", "{BDADDFF1-E430-4BC9-A801-9B26591BF116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageDrop.Core", "MessageDrop.Core\MessageDrop.Core.csproj", "{BDADDFF1-E430-4BC9-A801-9B26591BF116}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageDrop.EF", "MessageDrop.EF\MessageDrop.EF.csproj", "{960B0215-F9D2-4B1B-B194-574D49ACB5C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageDrop.EF", "MessageDrop.EF\MessageDrop.EF.csproj", "{960B0215-F9D2-4B1B-B194-574D49ACB5C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
