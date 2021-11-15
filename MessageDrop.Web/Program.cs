@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 // Create IoC with 50 fields for Message MAX 30
-builder.Services.AddSingleton<IMessageData>(new InMemoryMessageData(true, 20));
+//builder.Services.AddSingleton<IMessageData>(new InMemoryMessageData(true, 20));
+builder.Services.AddSingleton<IMessageData>(new MessageData(true, 20));
 
 var app = builder.Build();
 

@@ -7,6 +7,8 @@ namespace MessageDrop.Web.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+
+        /*Variables Eric added, may not be correct*/
         private readonly IMessageData _messageData;
         public IEnumerable<Message> Messages { get; set; }
         private Message message;
@@ -25,10 +27,11 @@ namespace MessageDrop.Web.Pages
 
         public String SetMessage(string message)
         {
-            this.message = new Message(99, message);
+            this.message = new Message(0, message);
             _messageData.Insert(this.message);
             OnGet();
             return this.message.MessageString;
         }
+
     }
 }

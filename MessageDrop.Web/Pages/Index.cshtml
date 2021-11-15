@@ -5,7 +5,6 @@
 }
 
 @{
-    String _message = "Cool man";
     if (HttpMethods.IsPost(Request.Method))
     {
         String messageString = Request.Form["inputText"];
@@ -29,7 +28,7 @@
             <fieldset>
                 <legend>Message to DROP</legend>
                 <textarea id="input-text" rows="10" cols="5" name="inputText"
-                          placeholder="Enter your message to drop here"></textarea>
+                          placeholder="Enter your message to DROP here"></textarea>
             </fieldset>
             <button id="encrypt-it" style="text-align: center">DROP IT!</button>
         </form>
