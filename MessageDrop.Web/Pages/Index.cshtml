@@ -4,7 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html>
+<head>
+    <title>MessageDrop!</title>
+</head>
+<body>
+    <header>
+        <h1>MessageDrop!!</h1>
+        <h2>Drop those hot messages!</h2>
+    </header>
+    <main>
+
+        <fieldset>
+            <legend>Message to DROP</legend>
+            <textarea id="input-text" rows="10" cols="10"
+                      placeholder="Enter your message to drop here"></textarea>
+        </fieldset>
+        <div>
+            <button id="encrypt-it" style="text-align: center">DROP IT!</button>
+        </div>
+        <fieldset>
+            <legend>DROPPED messages:</legend>
+            <div id="result-area">
+                <p id="result" style="height: 400px"></p>
+            </div>
+        </fieldset>
+    </main>
+</body>
+</html>
