@@ -87,5 +87,16 @@ namespace MessageDrop.Core.Service
             // accountById returns IEnumerable meaning we have to cast it as a single Account 
             return Task.FromResult<Message>((Message)messageById);
         }
+
+        public Task<bool> Insert(Message message)
+        {
+            if (message == null)
+            {
+                return Task.FromResult(false);
+            }
+
+            _messages.Add(message);
+            return Task.FromResult(true);
+        }
     }
 }

@@ -6,5 +6,7 @@ namespace MessageDrop.Core.Interface
     {
         Task<IEnumerable<Message>> GetAll();
         Task<Message> Get(int id);
+
+        Task<bool> Insert(Message message);
     }
 }
