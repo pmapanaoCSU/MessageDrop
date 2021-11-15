@@ -12,7 +12,7 @@ namespace MessageDrop.Core.Service
         private int genID = 0;
 
         // MAKE SURE TO EDIT THIS PATH ON YOUR LOCAL MACHINE CONTEXT 
-        private string RANDOM_WORDS_JSON = @"C:\Users\AccedeoPix\source\repos\MessageDrop.Web\MessageDrop.Core\StaticData\RandomWords.json";
+        private string RANDOM_WORDS_JSON = @"C:\Users\emarl\Source\Repos\pmapanaoCSU\MessageDrop\MessageDrop.Core\StaticData\RandomWords.json";
 
         private Random rng = new Random();
 
