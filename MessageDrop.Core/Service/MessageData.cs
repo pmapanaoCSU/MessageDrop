@@ -1,5 +1,5 @@
 ﻿using MessageDrop.Core.Interface;
-using MessageDrop.Core.Model;
+using MessageDrop.EF.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
@@ -89,6 +89,11 @@ namespace MessageDrop.Core.Service
 
             _messages.Add(message);
             return Task.FromResult(true);
+        }
+
+        public Task<bool> Save()
+        {
+            throw new NotImplementedException();
         }
     }
 }

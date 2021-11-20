@@ -1,5 +1,5 @@
 ﻿using MessageDrop.Core.Interface;
-using MessageDrop.Core.Model;
+using MessageDrop.EF.Model;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MessageDrop.Web.Pages

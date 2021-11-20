@@ -1,5 +1,5 @@
 using MessageDrop.Core.Interface;
-using MessageDrop.Core.Model;
+using MessageDrop.EF.Model;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MessageDrop.Web.Pages.Messages
@@ -7,7 +7,7 @@ namespace MessageDrop.Web.Pages.Messages
     public class ListModel : PageModel
     {
         private readonly IMessageData _messageData;
-        public IEnumerable<MessageCore> Messages { get; set; }
+        public IEnumerable<Message> Messages { get; set; }
 
         public ListModel(IMessageData messageData)
         {
